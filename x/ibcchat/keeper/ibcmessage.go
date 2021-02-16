@@ -71,7 +71,7 @@ func (k Keeper) OnRecvIbcmessagePacket(ctx sdk.Context, packet channeltypes.Pack
 		return err
 	}
 
-	// TODO: packet reception logic
+	k.AppendMessage(ctx, packet.SourcePort+"-"+packet.SourceChannel, data.Text)
 
 	return nil
 }
