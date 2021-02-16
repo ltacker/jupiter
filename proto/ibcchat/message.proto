@@ -1,0 +1,12 @@
+syntax = "proto3";
+package ltacker.jupiter.ibcchat;
+
+option go_package = "github.com/ltacker/jupiter/x/ibcchat/types";
+
+import "gogoproto/gogo.proto";
+
+message Message {
+  string creator = 1;
+  string id = 2;
+  string text = 3; 
+}

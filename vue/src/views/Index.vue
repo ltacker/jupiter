@@ -5,6 +5,7 @@
       <sp-bank-balances />
       <sp-token-send />
       <!-- this line is used by starport scaffolding # 4 -->
+		<sp-type-form path="ltacker.jupiter.ibcchat" type="message" :fields="[ ['creator', 1, 'string'] , ['text', 2, 'string'] ]" />
     </div>
   </div>
 </template>

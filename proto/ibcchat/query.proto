@@ -1,0 +1,39 @@
+syntax = "proto3";
+package ltacker.jupiter.ibcchat;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// this line is used by starport scaffolding # 1
+import "ibcchat/message.proto";
+
+option go_package = "github.com/ltacker/jupiter/x/ibcchat/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // this line is used by starport scaffolding # 2
+	rpc Message(QueryGetMessageRequest) returns (QueryGetMessageResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/ibcchat/message/{id}";
+	}
+	rpc MessageAll(QueryAllMessageRequest) returns (QueryAllMessageResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/ibcchat/message";
+	}
+
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetMessageRequest {
+	string id = 1;
+}
+
+message QueryGetMessageResponse {
+	Message Message = 1;
+}
+
+message QueryAllMessageRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllMessageResponse {
+	repeated Message Message = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

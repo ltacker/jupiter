@@ -86,6 +86,9 @@ import (
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
+	"github.com/ltacker/jupiter/x/ibcchat"
+	ibcchatkeeper "github.com/ltacker/jupiter/x/ibcchat/keeper"
+	ibcchattypes "github.com/ltacker/jupiter/x/ibcchat/types"
 )
 
 const Name = "jupiter"
@@ -133,6 +136,7 @@ var (
 		vesting.AppModuleBasic{},
 		jupiter.AppModuleBasic{},
 		// this line is used by starport scaffolding # stargate/app/moduleBasic
+		ibcchat.AppModuleBasic{},
 	)
 
 	// module account permissions
@@ -205,6 +209,8 @@ type App struct {
 
 	jupiterKeeper jupiterkeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
+	ScopedIbcchatKeeper capabilitykeeper.ScopedKeeper
+	ibcchatKeeper       ibcchatkeeper.Keeper
 
 	// the module manager
 	mm *module.Manager
@@ -235,6 +241,7 @@ func New(
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey, capabilitytypes.StoreKey,
 		jupitertypes.StoreKey,
 		// this line is used by starport scaffolding # stargate/app/storeKey
+		ibcchattypes.StoreKey,
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -329,6 +336,17 @@ func New(
 	)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
+	scopedIbcchatKeeper := app.CapabilityKeeper.ScopeToModule(ibcchattypes.ModuleName)
+	app.ScopedIbcchatKeeper = scopedIbcchatKeeper
+	app.ibcchatKeeper = *ibcchatkeeper.NewKeeper(
+		appCodec,
+		keys[ibcchattypes.StoreKey],
+		keys[ibcchattypes.MemStoreKey],
+		app.IBCKeeper.ChannelKeeper,
+		&app.IBCKeeper.PortKeeper,
+		scopedIbcchatKeeper,
+	)
+	ibcchatModule := ibcchat.NewAppModule(appCodec, app.ibcchatKeeper)
 
 	app.GovKeeper = govkeeper.NewKeeper(
 		appCodec, keys[govtypes.StoreKey], app.GetSubspace(govtypes.ModuleName), app.AccountKeeper, app.BankKeeper,
@@ -339,6 +357,7 @@ func New(
 	ibcRouter := porttypes.NewRouter()
 	ibcRouter.AddRoute(ibctransfertypes.ModuleName, transferModule)
 	// this line is used by starport scaffolding # ibc/app/router
+	ibcRouter.AddRoute(ibcchattypes.ModuleName, ibcchatModule)
 	app.IBCKeeper.SetRouter(ibcRouter)
 
 	/****  Module Options ****/
@@ -372,6 +391,7 @@ func New(
 		transferModule,
 		jupiter.NewAppModule(appCodec, app.jupiterKeeper),
 		// this line is used by starport scaffolding # stargate/app/appModule
+		ibcchatModule,
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -406,6 +426,7 @@ func New(
 		ibctransfertypes.ModuleName,
 		jupitertypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
+		ibcchattypes.ModuleName,
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -599,6 +620,7 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	// this line is used by starport scaffolding # stargate/app/paramSubspace
+	paramsKeeper.Subspace(ibcchattypes.ModuleName)
 
 	return paramsKeeper
 }

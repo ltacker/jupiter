@@ -1,0 +1,14 @@
+syntax = "proto3";
+package ltacker.jupiter.ibcchat;
+
+// this line is used by starport scaffolding # genesis/proto/import
+import "ibcchat/message.proto";
+
+option go_package = "github.com/ltacker/jupiter/x/ibcchat/types";
+
+// GenesisState defines the ibcchat module's genesis state.
+message GenesisState {
+    // this line is used by starport scaffolding # genesis/proto/state
+		repeated Message messageList = 2; // this line is used by starport scaffolding # genesis/proto/stateField
+    string port_id = 1; // this line is used by starport scaffolding # genesis/proto/stateField
+}

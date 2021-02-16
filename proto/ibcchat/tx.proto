@@ -1,0 +1,51 @@
+syntax = "proto3";
+package ltacker.jupiter.ibcchat;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/ltacker/jupiter/x/ibcchat/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc SendIbcmessage(MsgSendIbcmessage) returns (MsgSendIbcmessageResponse);
+  rpc CreateMessage(MsgCreateMessage) returns (MsgCreateMessageResponse);
+  rpc UpdateMessage(MsgUpdateMessage) returns (MsgUpdateMessageResponse);
+  rpc DeleteMessage(MsgDeleteMessage) returns (MsgDeleteMessageResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgSendIbcmessage {
+  string sender = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+  string text = 5;
+}
+
+message MsgSendIbcmessageResponse {
+}
+
+message MsgCreateMessage {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateMessageResponse {
+  string id = 1;
+}
+
+message MsgUpdateMessage {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateMessageResponse { }
+
+message MsgDeleteMessage {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteMessageResponse { }
