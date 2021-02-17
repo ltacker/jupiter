@@ -1,0 +1,12 @@
+syntax = "proto3";
+package ltacker.jupiter.laugh;
+
+option go_package = "github.com/ltacker/jupiter/x/laugh/types";
+
+import "gogoproto/gogo.proto";
+
+message Hihisent {
+  string creator = 1;
+  string id = 2;
+  string text = 3; 
+}

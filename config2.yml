@@ -1,0 +1,24 @@
+accounts:
+  - name: alice
+    coins: ["1000token", "100000000stake"]
+  - name: bob
+    coins: ["500token"]
+validator:
+  name: alice
+  staked: "100000000stake"
+faucet:
+  name: bob
+  coins:
+    - "5token"
+servers:
+  rpc-address: "0.0.0.0:26659"
+  p2p-address: "0.0.0.0:26658"
+  prof-address: "0.0.0.0:6061"
+  grpc-address: "0.0.0.0:9091"
+  api-address: "0.0.0.0:1318"
+  frontend-address: "0.0.0.0:8081"
+  dev-ui-address: "0.0.0.0:12346"
+genesis:
+  chain_id: "jupiter2"
+init:
+  home: "$HOME/jupiter2"

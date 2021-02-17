@@ -10,3 +10,7 @@ faucet:
   name: bob 
   coins:
     - "5token"
+genesis:
+  chain_id: "jupiter1"
+init:
+  home: "$HOME/jupiter1"

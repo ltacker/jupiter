@@ -1,0 +1,207 @@
+syntax = "proto3";
+package ltacker.jupiter.laugh;
+
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/ltacker/jupiter/x/laugh/types";
+
+// Msg defines the Msg service.
+service Msg {
+    // this line is used by starport scaffolding # proto/tx/rpc
+  rpc SendHohomes(MsgSendHohomes) returns (MsgSendHohomesResponse);
+  rpc SendHihimes(MsgSendHihimes) returns (MsgSendHihimesResponse);
+  rpc SendHahames(MsgSendHahames) returns (MsgSendHahamesResponse);
+  rpc CreateHoho(MsgCreateHoho) returns (MsgCreateHohoResponse);
+  rpc UpdateHoho(MsgUpdateHoho) returns (MsgUpdateHohoResponse);
+  rpc DeleteHoho(MsgDeleteHoho) returns (MsgDeleteHohoResponse);
+  rpc CreateHihi(MsgCreateHihi) returns (MsgCreateHihiResponse);
+  rpc UpdateHihi(MsgUpdateHihi) returns (MsgUpdateHihiResponse);
+  rpc DeleteHihi(MsgDeleteHihi) returns (MsgDeleteHihiResponse);
+  rpc CreateHaha(MsgCreateHaha) returns (MsgCreateHahaResponse);
+  rpc UpdateHaha(MsgUpdateHaha) returns (MsgUpdateHahaResponse);
+  rpc DeleteHaha(MsgDeleteHaha) returns (MsgDeleteHahaResponse);
+  rpc CreateHohosent(MsgCreateHohosent) returns (MsgCreateHohosentResponse);
+  rpc UpdateHohosent(MsgUpdateHohosent) returns (MsgUpdateHohosentResponse);
+  rpc DeleteHohosent(MsgDeleteHohosent) returns (MsgDeleteHohosentResponse);
+  rpc CreateHihisent(MsgCreateHihisent) returns (MsgCreateHihisentResponse);
+  rpc UpdateHihisent(MsgUpdateHihisent) returns (MsgUpdateHihisentResponse);
+  rpc DeleteHihisent(MsgDeleteHihisent) returns (MsgDeleteHihisentResponse);
+  rpc CreateHahasent(MsgCreateHahasent) returns (MsgCreateHahasentResponse);
+  rpc UpdateHahasent(MsgUpdateHahasent) returns (MsgUpdateHahasentResponse);
+  rpc DeleteHahasent(MsgDeleteHahasent) returns (MsgDeleteHahasentResponse);
+}
+
+// this line is used by starport scaffolding # proto/tx/message
+message MsgSendHohomes {
+  string sender = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+}
+
+message MsgSendHohomesResponse {
+}
+
+message MsgSendHihimes {
+  string sender = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+}
+
+message MsgSendHihimesResponse {
+}
+
+message MsgSendHahames {
+  string sender = 1;
+  string port = 2;
+  string channelID = 3;
+  uint64 timeoutTimestamp = 4;
+}
+
+message MsgSendHahamesResponse {
+}
+
+message MsgCreateHoho {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHohoResponse {
+  string id = 1;
+}
+
+message MsgUpdateHoho {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHohoResponse { }
+
+message MsgDeleteHoho {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHohoResponse { }
+
+message MsgCreateHihi {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHihiResponse {
+  string id = 1;
+}
+
+message MsgUpdateHihi {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHihiResponse { }
+
+message MsgDeleteHihi {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHihiResponse { }
+
+message MsgCreateHaha {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHahaResponse {
+  string id = 1;
+}
+
+message MsgUpdateHaha {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHahaResponse { }
+
+message MsgDeleteHaha {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHahaResponse { }
+
+message MsgCreateHohosent {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHohosentResponse {
+  string id = 1;
+}
+
+message MsgUpdateHohosent {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHohosentResponse { }
+
+message MsgDeleteHohosent {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHohosentResponse { }
+
+message MsgCreateHihisent {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHihisentResponse {
+  string id = 1;
+}
+
+message MsgUpdateHihisent {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHihisentResponse { }
+
+message MsgDeleteHihisent {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHihisentResponse { }
+
+message MsgCreateHahasent {
+  string creator = 1;
+  string text = 2;
+}
+
+message MsgCreateHahasentResponse {
+  string id = 1;
+}
+
+message MsgUpdateHahasent {
+  string creator = 1;
+  string id = 2;
+  string text = 3;
+}
+
+message MsgUpdateHahasentResponse { }
+
+message MsgDeleteHahasent {
+  string creator = 1;
+  string id = 2;
+}
+
+message MsgDeleteHahasentResponse { }

@@ -1,0 +1,159 @@
+syntax = "proto3";
+package ltacker.jupiter.laugh;
+
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+// this line is used by starport scaffolding # 1
+import "laugh/hoho.proto";
+import "laugh/hihi.proto";
+import "laugh/haha.proto";
+import "laugh/hohosent.proto";
+import "laugh/hihisent.proto";
+import "laugh/hahasent.proto";
+
+option go_package = "github.com/ltacker/jupiter/x/laugh/types";
+
+// Query defines the gRPC querier service.
+service Query {
+    // this line is used by starport scaffolding # 2
+	rpc Hoho(QueryGetHohoRequest) returns (QueryGetHohoResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hoho/{id}";
+	}
+	rpc HohoAll(QueryAllHohoRequest) returns (QueryAllHohoResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hoho";
+	}
+
+	rpc Hihi(QueryGetHihiRequest) returns (QueryGetHihiResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hihi/{id}";
+	}
+	rpc HihiAll(QueryAllHihiRequest) returns (QueryAllHihiResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hihi";
+	}
+
+	rpc Haha(QueryGetHahaRequest) returns (QueryGetHahaResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/haha/{id}";
+	}
+	rpc HahaAll(QueryAllHahaRequest) returns (QueryAllHahaResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/haha";
+	}
+
+	rpc Hohosent(QueryGetHohosentRequest) returns (QueryGetHohosentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hohosent/{id}";
+	}
+	rpc HohosentAll(QueryAllHohosentRequest) returns (QueryAllHohosentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hohosent";
+	}
+
+	rpc Hihisent(QueryGetHihisentRequest) returns (QueryGetHihisentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hihisent/{id}";
+	}
+	rpc HihisentAll(QueryAllHihisentRequest) returns (QueryAllHihisentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hihisent";
+	}
+
+	rpc Hahasent(QueryGetHahasentRequest) returns (QueryGetHahasentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hahasent/{id}";
+	}
+	rpc HahasentAll(QueryAllHahasentRequest) returns (QueryAllHahasentResponse) {
+		option (google.api.http).get = "/ltacker/jupiter/laugh/hahasent";
+	}
+
+}
+
+// this line is used by starport scaffolding # 3
+message QueryGetHohoRequest {
+	string id = 1;
+}
+
+message QueryGetHohoResponse {
+	Hoho Hoho = 1;
+}
+
+message QueryAllHohoRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHohoResponse {
+	repeated Hoho Hoho = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetHihiRequest {
+	string id = 1;
+}
+
+message QueryGetHihiResponse {
+	Hihi Hihi = 1;
+}
+
+message QueryAllHihiRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHihiResponse {
+	repeated Hihi Hihi = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetHahaRequest {
+	string id = 1;
+}
+
+message QueryGetHahaResponse {
+	Haha Haha = 1;
+}
+
+message QueryAllHahaRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHahaResponse {
+	repeated Haha Haha = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetHohosentRequest {
+	string id = 1;
+}
+
+message QueryGetHohosentResponse {
+	Hohosent Hohosent = 1;
+}
+
+message QueryAllHohosentRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHohosentResponse {
+	repeated Hohosent Hohosent = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetHihisentRequest {
+	string id = 1;
+}
+
+message QueryGetHihisentResponse {
+	Hihisent Hihisent = 1;
+}
+
+message QueryAllHihisentRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHihisentResponse {
+	repeated Hihisent Hihisent = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+message QueryGetHahasentRequest {
+	string id = 1;
+}
+
+message QueryGetHahasentResponse {
+	Hahasent Hahasent = 1;
+}
+
+message QueryAllHahasentRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllHahasentResponse {
+	repeated Hahasent Hahasent = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
