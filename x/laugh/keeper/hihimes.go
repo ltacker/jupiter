@@ -1,6 +1,7 @@
 package keeper
 
 import (
+	"errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	clienttypes "github.com/cosmos/cosmos-sdk/x/ibc/core/02-client/types"
@@ -72,8 +73,9 @@ func (k Keeper) OnRecvHihimesPacket(ctx sdk.Context, packet channeltypes.Packet,
 	}
 
 	// TODO: packet reception logic
+	k.AppendHihi(ctx, packet.SourcePort+"-"+packet.SourceChannel, "")
 
-	return nil
+	return errors.New("no hihi")
 }
 
 // OnAcknowledgementHihimesPacket responds to the the success or failure of a packet
@@ -83,11 +85,13 @@ func (k Keeper) OnAcknowledgementHihimesPacket(ctx sdk.Context, packet channelty
 	case *channeltypes.Acknowledgement_Error:
 
 		// TODO: failed acknowledgement logic
+		k.AppendHihisent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "fail")
 
 		return nil
 	default:
 
 		// TODO: successful acknowledgement logic
+		k.AppendHihisent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "success")
 
 		return nil
 	}
@@ -97,6 +101,7 @@ func (k Keeper) OnAcknowledgementHihimesPacket(ctx sdk.Context, packet channelty
 func (k Keeper) OnTimeoutHihimesPacket(ctx sdk.Context, packet channeltypes.Packet, data types.HihimesPacketData) error {
 
 	// TODO: packet timeout logic
+	k.AppendHihisent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "timeout")
 
 	return nil
 }

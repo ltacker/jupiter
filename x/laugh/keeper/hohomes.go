@@ -72,6 +72,7 @@ func (k Keeper) OnRecvHohomesPacket(ctx sdk.Context, packet channeltypes.Packet,
 	}
 
 	// TODO: packet reception logic
+	k.AppendHoho(ctx, packet.SourcePort+"-"+packet.SourceChannel, "")
 
 	return nil
 }
@@ -83,11 +84,13 @@ func (k Keeper) OnAcknowledgementHohomesPacket(ctx sdk.Context, packet channelty
 	case *channeltypes.Acknowledgement_Error:
 
 		// TODO: failed acknowledgement logic
+		k.AppendHohosent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "fail")
 
 		return nil
 	default:
 
 		// TODO: successful acknowledgement logic
+		k.AppendHohosent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "success")
 
 		return nil
 	}
@@ -97,6 +100,7 @@ func (k Keeper) OnAcknowledgementHohomesPacket(ctx sdk.Context, packet channelty
 func (k Keeper) OnTimeoutHohomesPacket(ctx sdk.Context, packet channeltypes.Packet, data types.HohomesPacketData) error {
 
 	// TODO: packet timeout logic
+	k.AppendHohosent(ctx, packet.SourcePort+"-"+packet.SourceChannel, "timeout")
 
 	return nil
 }
